@@ -27,9 +27,9 @@ const Cart = ({ cart }) => {
                         <td>Total</td>
                         <td />
                         <td>
-                            <div>Total: {cart.total.price}</div>
-                            <div>inc {cart.total.importationTax} importation tax</div>
-                            <div>inc {cart.total.salesTax} sales tax</div>
+                            <div>Total: £{cart.total.price.toFixed(2)}</div>
+                            <div>inc £{cart.total.importationTax.toFixed(2)} importation tax</div>
+                            <div>inc £{cart.total.salesTax.toFixed(2)} sales tax</div>
                         </td>
                     </tr>
                 </tfoot>

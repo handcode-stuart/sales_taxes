@@ -6,7 +6,7 @@ const CartItem = ({ item: { name, quantity, price } }) => (
         <tr>
             <td>{name}</td>
             <td>{quantity}</td>
-            <td>{price}</td>
+            <td>£{price.toFixed(2)}</td>
         </tr>
     </Fragment>
 );
