@@ -1,0 +1,47 @@
+@import "../../global.scss";
+
+.navbar {
+    width: 100%;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background-color: $color-white;
+    z-index: 1;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul {
+        list-style-type: none;
+
+        li {
+            display: inline-block;
+        }
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &.active {
+            color: red;
+        }
+    }
+
+    h1 a {
+        color: $color-black;
+    }
+
+    &__products-btn {
+        color: $color-black;
+    }
+
+    &__checkout-btn {
+        margin-left: 20px;
+    }
+}

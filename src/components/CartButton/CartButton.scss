@@ -1,0 +1,13 @@
+@import "../../global.scss";
+
+.cart-button {
+    background-color: $color-black;
+    border-radius: 4px;
+    padding: 8px;
+    text-decoration: none;
+    color: #fff;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+}
