@@ -3,14 +3,16 @@ import { connect } from "react-redux";
 
 import "./ProductsList.scss";
 
+import Product from "../Product/Product";
+
 const ProductsList = ({ products }) => {
     const [filterCategory, setFilterCategory] = useState(null);
 
     const filteredProducts = filterCategory
         ? products
               .filter(item => item.category === filterCategory)
-              .map(item => <div>{item.name}</div>)
-        : products.map(item => <div>{item.name}</div>);
+              .map(item => <Product product={item} />)
+        : products.map(item => <Product product={item} />);
 
     const productCategories = products
         .reduce((a, b) => {
