@@ -1,16 +1,31 @@
-import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, UPDATE_CART_TOTAL } from "./types";
+import {
+    ADD_PRODUCT_TO_CART,
+    REMOVE_PRODUCT_FROM_CART,
+    ADD_PRICE_TO_CART_TOTAL,
+    REMOVE_PRICE_FROM_CART_TOTAL,
+} from "./types";
 import { calcImportationTax, calcSalesTax } from "../utils/taxCalculator";
 
 export const addProductToCart = product => dispatch => {
-    const productImportationTax = product.importationTax ? calcImportationTax(product.price) : 0;
-    const productSalesTax = product.salesTax ? calcSalesTax(product.price) : 0;
+    const productImportationTax =
+        typeof product.importationTax === "boolean"
+            ? product.importationTax
+                ? calcImportationTax(product.price)
+                : 0
+            : product.importationTax;
+    const productSalesTax =
+        typeof product.salesTax === "boolean"
+            ? product.salesTax
+                ? calcSalesTax(product.price)
+                : 0
+            : product.salesTax;
     const totals = {
         price: product.price + productImportationTax + productSalesTax,
         importationTax: productImportationTax,
         salesTax: productSalesTax,
     };
 
-    dispatch({ type: UPDATE_CART_TOTAL, payload: totals });
+    dispatch({ type: ADD_PRICE_TO_CART_TOTAL, payload: totals });
 
     dispatch({
         type: ADD_PRODUCT_TO_CART,
@@ -22,9 +37,19 @@ export const addProductToCart = product => dispatch => {
     });
 };
 
-export const removeProductFromCart = productId => dispatch => {
+export const removeProductFromCart = product => dispatch => {
+    const productImportationTax = product.importationTax ? calcImportationTax(product.price) : 0;
+    const productSalesTax = product.salesTax ? calcSalesTax(product.price) : 0;
+    const totals = {
+        price: product.price + productImportationTax + productSalesTax,
+        importationTax: productImportationTax,
+        salesTax: productSalesTax,
+    };
+
+    dispatch({ type: REMOVE_PRICE_FROM_CART_TOTAL, payload: totals });
+
     dispatch({
         type: REMOVE_PRODUCT_FROM_CART,
-        payload: productId,
+        payload: product.id,
     });
 };
