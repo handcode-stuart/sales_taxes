@@ -9,7 +9,7 @@ const Product = ({ addProductToCart, product }) => {
 
     return (
         <div>
-            {name} - {price} -{" "}
+            {name} - £{price.toFixed(2)} -{" "}
             <button onClick={() => addProductToCart(product)}>Add to cart</button>
         </div>
     );
