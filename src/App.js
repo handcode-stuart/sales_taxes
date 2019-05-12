@@ -7,6 +7,7 @@ import "./App.scss";
 
 import Products from "./pages/Products";
 import Checkout from "./pages/Checkout";
+import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <Switch>
                         <Route exact path='/' component={Products} />
                         <Route path='/checkout' component={Checkout} />
+                        <Route component={NotFound} />
                     </Switch>
                 </div>
             </Router>
