@@ -1,5 +1,3 @@
-import { GET_PRODUCTS } from "../actions/types";
-
 const initialState = [
     {
         id: 1,
@@ -68,7 +66,6 @@ const initialState = [
 export default function(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
-        case GET_PRODUCTS:
         default:
             return [...state];
     }
