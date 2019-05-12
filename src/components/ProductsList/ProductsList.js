@@ -20,7 +20,11 @@ const ProductsList = ({ products }) => {
             return a;
         }, [])
         .map(category => (
-            <button key={category} onClick={() => filterProductListCategory(category)}>
+            <button
+                className='button'
+                key={category}
+                onClick={() => filterProductListCategory(category)}
+            >
                 {category}
             </button>
         ));
@@ -31,12 +35,14 @@ const ProductsList = ({ products }) => {
 
     return (
         <div>
-            <h1>Products list</h1>
+            <h1>Products</h1>
             <div>
-                <button onClick={() => filterProductListCategory()}>All</button>
+                <button className='button' onClick={() => filterProductListCategory()}>
+                    All
+                </button>
                 {productCategories}
             </div>
-            {filteredProducts}
+            <div className='products-list'>{filteredProducts}</div>
         </div>
     );
 };

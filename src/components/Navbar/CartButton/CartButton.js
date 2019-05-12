@@ -3,24 +3,26 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import "./CartButton.scss";
-
-const CartButton = ({ cart }) => {
-    const cartCount = cart.map(product => product.quantity).reduce((acc, val) => acc + val, 0);
+const CartButton = ({ cartProducts, cartTotal }) => {
+    const cartCount = cartProducts
+        .map(product => product.quantity)
+        .reduce((acc, val) => acc + val, 0);
 
     return (
-        <Link to='/checkout' className='cart-button'>
-            <i className='fas fa-shopping-basket' /> ({cartCount})
+        <Link to='/checkout' className='button'>
+            <i className='fas fa-shopping-basket' /> ({cartCount}) £{cartTotal.toFixed(2)}
         </Link>
     );
 };
 
 CartButton.propTypes = {
-    cart: PropTypes.array.isRequired,
+    cartProducts: PropTypes.array.isRequired,
+    cartTotal: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
-    cart: state.cart.products,
+    cartProducts: state.cart.products,
+    cartTotal: state.cart.total.price,
 });
 
 export default connect(mapStateToProps)(CartButton);

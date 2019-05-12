@@ -26,8 +26,6 @@
     a {
         text-decoration: none;
 
-        &:hover,
-        &:focus,
         &.active {
             color: red;
         }
@@ -39,9 +37,6 @@
 
     &__products-btn {
         color: $color-black;
-    }
-
-    &__checkout-btn {
-        margin-left: 20px;
+        margin-right: 20px;
     }
 }

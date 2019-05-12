@@ -12,7 +12,7 @@ const CartItem = ({ addProductToCart, removeProductFromCart, item }) => {
                 <td>{name}</td>
                 <td>
                     <button
-                        className='btn'
+                        className='button'
                         onClick={() =>
                             removeProductFromCart({ id, price, importationTax, salesTax })
                         }
@@ -20,7 +20,7 @@ const CartItem = ({ addProductToCart, removeProductFromCart, item }) => {
                         -
                     </button>
                     {quantity}
-                    <button className='btn' onClick={() => addProductToCart(item)}>
+                    <button className='button' onClick={() => addProductToCart(item)}>
                         +
                     </button>
                 </td>

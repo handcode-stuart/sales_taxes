@@ -2,15 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addProductToCart } from "../../actions/cart";
-import "./Product.scss";
 
 const Product = ({ addProductToCart, product }) => {
-    const { name, price } = product;
+    const { name, price, image } = product;
 
     return (
-        <div>
-            {name} - £{price.toFixed(2)} -{" "}
-            <button onClick={() => addProductToCart(product)}>Add to cart</button>
+        <div className='products-list__product'>
+            <div className='products-list__product__img-holder'>
+                <img src={image} />
+            </div>
+            <div className='products-list__product__meta'>
+                <div>
+                    <h3 className='products-list__product__name'>{name}</h3>
+                    <h4>£{price.toFixed(2)}</h4>
+                </div>
+                <div>
+                    <button className='button' onClick={() => addProductToCart(product)}>
+                        Add to cart
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
