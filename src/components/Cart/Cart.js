@@ -26,7 +26,11 @@ const Cart = ({ cart }) => {
                     <tr>
                         <td>Total</td>
                         <td />
-                        <td>123456776543</td>
+                        <td>
+                            <div>Total: {cart.total.price}</div>
+                            <div>inc {cart.total.importationTax} importation tax</div>
+                            <div>inc {cart.total.salesTax} sales tax</div>
+                        </td>
                     </tr>
                 </tfoot>
             </table>
@@ -37,6 +41,7 @@ const Cart = ({ cart }) => {
 Cart.propTypes = {
     cart: PropTypes.shape({
         products: PropTypes.array.isRequired,
+        total: PropTypes.object.isRequired,
     }),
 };
 

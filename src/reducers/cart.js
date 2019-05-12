@@ -1,7 +1,12 @@
-import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from "../actions/types";
+import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, UPDATE_CART_TOTAL } from "../actions/types";
 
 const initialState = {
     products: [],
+    total: {
+        price: 0,
+        importationTax: 0,
+        salesTax: 0,
+    },
 };
 
 export default function(state = initialState, action) {
@@ -31,6 +36,16 @@ export default function(state = initialState, action) {
                     ],
                 };
             }
+
+        case UPDATE_CART_TOTAL:
+            return {
+                ...state,
+                total: {
+                    price: state.total.price + payload.price,
+                    importationTax: state.total.importationTax + payload.importationTax,
+                    salesTax: state.total.salesTax + payload.salesTax,
+                },
+            };
 
         case REMOVE_PRODUCT_FROM_CART:
         default:
