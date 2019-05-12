@@ -1,15 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import "./CartButton.scss";
 
-const CartButton = () => (
-    <Link to='/checkout' className='cart-button'>
-        <i className='fas fa-shopping-basket' /> (0)
-    </Link>
-);
+const CartButton = ({ cart }) => {
+    const cartCount = cart.map(product => product.quantity).reduce((acc, val) => acc + val, 0);
 
-CartButton.propTypes = {};
+    return (
+        <Link to='/checkout' className='cart-button'>
+            <i className='fas fa-shopping-basket' /> ({cartCount})
+        </Link>
+    );
+};
 
-export default CartButton;
+CartButton.propTypes = {
+    cart: PropTypes.array.isRequired,
+};
+
+const mapStateToProps = state => ({
+    cart: state.cart.products,
+});
+
+export default connect(mapStateToProps)(CartButton);
