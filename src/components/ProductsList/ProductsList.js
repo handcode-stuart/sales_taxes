@@ -11,8 +11,8 @@ const ProductsList = ({ products }) => {
     const filteredProducts = filterCategory
         ? products
               .filter(item => item.category === filterCategory)
-              .map(item => <Product product={item} />)
-        : products.map(item => <Product product={item} />);
+              .map(item => <Product key={item.id} product={item} />)
+        : products.map(item => <Product key={item.id} product={item} />);
 
     const productCategories = products
         .reduce((a, b) => {
@@ -20,7 +20,9 @@ const ProductsList = ({ products }) => {
             return a;
         }, [])
         .map(category => (
-            <button onClick={() => filterProductListCategory(category)}>{category}</button>
+            <button key={category} onClick={() => filterProductListCategory(category)}>
+                {category}
+            </button>
         ));
 
     const filterProductListCategory = (category = null) => {
