@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import CartButton from "../CartButton/CartButton";
 
 import "./Navbar.scss";
+
+import CartButton from "./CartButton/CartButton";
 
 const Navbar = () => (
     <nav className='navbar'>
