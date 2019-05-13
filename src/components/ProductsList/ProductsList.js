@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import "./ProductsList.scss";
 
+import CategoryButtons from "./CategoryButtons/CategoryButtons";
 import Product from "./Product/Product";
 
 const ProductsList = ({ products }) => {
@@ -14,21 +15,6 @@ const ProductsList = ({ products }) => {
               .map(item => <Product key={item.id} product={item} />)
         : products.map(item => <Product key={item.id} product={item} />);
 
-    const productCategories = products
-        .reduce((a, b) => {
-            a.indexOf(b.category) < 0 && a.push(b.category);
-            return a;
-        }, [])
-        .map(category => (
-            <button
-                className='button'
-                key={category}
-                onClick={() => filterProductListCategory(category)}
-            >
-                {category}
-            </button>
-        ));
-
     const filterProductListCategory = (category = null) => {
         category ? setFilterCategory(category) : setFilterCategory(null);
     };
@@ -36,12 +22,10 @@ const ProductsList = ({ products }) => {
     return (
         <div>
             <h1>Products</h1>
-            <div>
-                <button className='button' onClick={() => filterProductListCategory()}>
-                    All
-                </button>
-                {productCategories}
-            </div>
+            <CategoryButtons
+                products={products}
+                filterProductListCategory={filterProductListCategory}
+            />
             <div className='products-list'>{filteredProducts}</div>
         </div>
     );
