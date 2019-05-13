@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addProductToCart } from "../../actions/cart";
+import { addProductToCart } from "../../../actions/cart";
 
 const Product = ({ addProductToCart, product }) => {
     const { name, price, image } = product;
@@ -9,7 +9,7 @@ const Product = ({ addProductToCart, product }) => {
     return (
         <div className='products-list__product'>
             <div className='products-list__product__img-holder'>
-                <img src={image} />
+                <img src={image} alt={`${name}`} />
             </div>
             <div className='products-list__product__meta'>
                 <div>

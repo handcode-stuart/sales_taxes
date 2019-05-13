@@ -33,7 +33,7 @@ const Cart = ({ cart }) => {
                                 <div>
                                     <strong>£{cart.total.price.toFixed(2)}</strong>
                                 </div>
-                                {cart.total.importationTax != 0 && (
+                                {cart.total.importationTax !== 0 && (
                                     <div>
                                         <span>
                                             inc £{cart.total.importationTax.toFixed(2)} importation
@@ -41,7 +41,7 @@ const Cart = ({ cart }) => {
                                         </span>
                                     </div>
                                 )}
-                                {cart.total.salesTax != 0 && (
+                                {cart.total.salesTax !== 0 && (
                                     <div>
                                         <span>inc £{cart.total.salesTax.toFixed(2)} sales tax</span>
                                     </div>

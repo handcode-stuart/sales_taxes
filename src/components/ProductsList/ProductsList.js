@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./ProductsList.scss";
 
-import Product from "../Product/Product";
+import Product from "./Product/Product";
 
 const ProductsList = ({ products }) => {
     const [filterCategory, setFilterCategory] = useState(null);
