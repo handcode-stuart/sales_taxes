@@ -8,13 +8,31 @@
     padding: 20px 0;
 
     &__product {
-        width: calc(33.33% - 10px);
-        margin-right: 15px;
+        width: 100%;
         padding: 20px 0;
         margin-bottom: 20px;
 
-        &:nth-child(3n) {
+        @include mq(tablet) {
+            width: calc(50% - 10px);
+            margin-right: 15px;
+        }
+
+        @include mq(desktop_sm) {
+            width: calc(33.33% - 10px);
+        }
+
+        &:nth-child(2n) {
             margin-right: 0;
+
+            @include mq(desktop_sm) {
+                margin-right: 15px;
+            }
+        }
+
+        &:nth-child(3n) {
+            @include mq(desktop_sm) {
+                margin-right: 0;
+            }
         }
 
         &__name {

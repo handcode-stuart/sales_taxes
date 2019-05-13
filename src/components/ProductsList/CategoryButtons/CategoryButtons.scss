@@ -1,5 +1,11 @@
+@import "../../../global.scss";
+
 .category-buttons {
-    text-align: right;
+    margin: 15px 0;
+
+    @include mq(tablet) {
+        text-align: right;
+    }
 
     button {
         margin-left: 5px;
